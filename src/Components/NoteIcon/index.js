@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactComponent as CheckSVG } from './check.svg';
 import { ReactComponent as DeleteSVG } from './delete.svg';
-import './TodoIcon.css';
+import './NoteIcon.css';
 
 const iconTypes = {
   "check": color => (
@@ -12,7 +12,7 @@ const iconTypes = {
   ),
 };
 
-function TodoIcon({ type, color = 'gray', onClick }) {
+function NoteIcon({ type, color = 'gray', onClick }) {
   return (
     <span
       className={`Icon-container Icon-container--${type}`}
@@ -23,4 +23,4 @@ function TodoIcon({ type, color = 'gray', onClick }) {
   );
 }
 
-export { TodoIcon };
+export { NoteIcon };

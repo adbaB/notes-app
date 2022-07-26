@@ -1,10 +1,10 @@
 import React from 'react';
-import { TodoCounter } from '../TodoCounter';
-import { TodoList } from '../TodoList';
-import { TodoItem } from '../TodoItem';
-import { TodosError } from '../TodosError';
-import { TodosLoading } from '../TodosLoading';
-import { EmptyTodos } from '../EmptyTodos';
+import { NoteCounter } from '../NoteCounter';
+import { NoteList } from '../NoteList';
+import { NoteItem } from '../NoteItem';
+import { NotesError } from '../NotesError';
+import { NotesLoading } from '../NotesLoading';
+import { EmptyNotes } from '../EmptyNotes';
 
 import { CreateNoteButton } from '../CreateNoteButton';
 import { Form } from '../Form';
@@ -16,44 +16,41 @@ function App() {
     const {
       error,
       loading,
-      searchedTodos,
-      completeTodo,
-      deleteTodo,
+      searchedNotes,
+      deleteNote,
       openModal,
       setOpenModal,
-      addTodo,
-      totalTodos    
+      addNote,
+      totalNotes    
     } = useNotes();
      
     return (
       <>
       <Header>
-        <TodoCounter totalTodos = {totalTodos}/>
+        <NoteCounter totalNotes = {totalNotes} />
         <CreateNoteButton
           setOpenModal={setOpenModal}
         />
       </Header>
   
-        <TodoList>
-          {error && <TodosError />}
-          {loading && <TodosLoading />}
-          {(!loading && !searchedTodos.length) && <EmptyTodos />}
+        <NoteList>
+          {error && <NotesError />}
+          {loading && <NotesLoading />}
+          {(!loading && !searchedNotes.length) && <EmptyNotes />}
           
-          {searchedTodos.map(todo => (
-            <TodoItem
-              key={todo.text}
-              text={todo.text}
-              completed={todo.completed}
-              onComplete={() => completeTodo(todo.text)}
-              onDelete={() => deleteTodo(todo.text)}
+          {searchedNotes.map((note) => (
+            <NoteItem
+              key={note.id}
+              note ={note}
+              onDelete={() => deleteNote(note.id)}
             />
           ))}
-        </TodoList>
+        </NoteList>
   
        
           <Form 
           openModal = {openModal} 
-          setOpenModal = {setOpenModal} addTodo = {addTodo} />
+          setOpenModal = {setOpenModal} action = {addNote} />
           
        
       

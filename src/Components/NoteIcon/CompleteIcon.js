@@ -1,9 +1,9 @@
 import React from 'react';
-import { TodoIcon } from './';
+import { NoteIcon } from '.';
 
 function CompleteIcon({ completed, onComplete }) {
   return (
-    <TodoIcon
+    <NoteIcon
       type="check"
       color={completed ? '#4caf50' : 'gray'}
       onClick={onComplete}

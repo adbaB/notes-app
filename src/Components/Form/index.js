@@ -3,21 +3,27 @@ import Button from "react-bootstrap/Button";
 import "./Modal.css";
 import { useState } from "react";
 
-export const Form = ({
-  openModal,
-  setOpenModal,
-  addTodo,
-  children,
-}) => {
-  const [newTodoValue, setNewTodoValue] = useState("");
+export const Form = ({ openModal, setOpenModal, action }) => {
+  const [textAreaValue, setTextAreaValue] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
-  const onChange = (event) => {
-    setNewTodoValue(event.target.value);
+  const onChangeInput = (event) => {
+    setInputValue(event.target.value);
+  };
+  const onChangeTextArea = (event) => {
+    setTextAreaValue(event.target.value);
   };
   const handlerModal = () => setOpenModal(false);
   const onSubmit = (e) => {
     e.preventDefault();
-    addTodo(newTodoValue);
+    action({
+      title: inputValue,
+      content: textAreaValue,
+      categories: ['github','example'],
+      archived: false
+    });
+    setInputValue("")
+    setTextAreaValue("")
     setOpenModal(false);
   };
   return (
@@ -27,11 +33,21 @@ export const Form = ({
       </Modal.Header>
       <form onSubmit={onSubmit}>
         <Modal.Body>
+          <label>Title</label>
+          <input
+            type="text"
+            placeholder="Titler"
+            onChange={onChangeInput}
+            value={inputValue}
+          ></input>
+          <label>Content</label>
           <textarea
-            value={newTodoValue}
-            onChange={onChange}
-            placeholder="Cortar la cebolla oara el almuerzo"
+            value={textAreaValue}
+            onChange={onChangeTextArea}
+            placeholder="Cortar la cebolla para el almuerzo"
           />
+          <label>Categories</label>
+          <div>Categories</div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handlerModal}>

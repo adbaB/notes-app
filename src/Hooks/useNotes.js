@@ -1,67 +1,67 @@
 import React from 'react';
+import uuid from 'react-uuid';
 import { useLocalStorage } from './useLocalStorage';
 
 
 
 export function useNotes() {
   const {
-    item: todos,
-    saveItem: saveTodos,
+    item: notes,
+    saveItem: saveNote,
     loading,
     error,
-  } = useLocalStorage('TODOS_V1', []);
+  } = useLocalStorage('NOTES', []);
   const [searchValue, setSearchValue] = React.useState('');
   const [openModal, setOpenModal] = React.useState(false);
 
-  const completedTodos = todos.filter(todo => !!todo.completed).length;
-  const totalTodos = todos.length;
+  const archivedNote = notes.filter(note => !!note.archived).length;
+  const totalNotes = notes.length;
 
-  let searchedTodos = [];
+  let searchedNotes = [];
 
   if (!searchValue.length >= 1) {
-    searchedTodos = todos;
+    searchedNotes = notes;
   } else {
-    searchedTodos = todos.filter(todo => {
-      const todoText = todo.text.toLowerCase();
+    searchedNotes = notes.filter(notes => {
+      const notesText = notes.text.toLowerCase();
       const searchText = searchValue.toLowerCase();
-      return todoText.includes(searchText);
+      return notesText.includes(searchText);
     });
   }
 
-  const addTodo = (text) => {
-    const newTodos = [...todos];
-    newTodos.push({
-      completed: false,
-      text,
-    });
-    saveTodos(newTodos);
+  const addNote = (newNote) => {
+    newNote.id = uuid()
+    console.log(newNote)
+    const newNotes = [...notes];
+    newNotes.push(newNote);
+    saveNote(newNotes);
   };
 
-  const completeTodo = (text) => {
-    const todoIndex = todos.findIndex(todo => todo.text === text);
-    const newTodos = [...todos];
-    newTodos[todoIndex].completed = true;
-    saveTodos(newTodos);
+  const updateNote = (editNote) => {
+    const noteIndex = notes.findIndex(note => note.id === editNote.id);
+    const newNote = [...notes];
+    newNote[noteIndex] = editNote;
+    saveNote(newNote);
   };
 
-  const deleteTodo = (text) => {
-    const todoIndex = todos.findIndex(todo => todo.text === text);
-    const newTodos = [...todos];
-    newTodos.splice(todoIndex, 1);
-    saveTodos(newTodos);
+  const deleteNote = (id) => {
+    const noteIndex = notes.findIndex(note => note.id === id);
+    const newNotes = [...notes];
+    newNotes.splice(noteIndex, 1);
+    saveNote(newNotes);
   };
   
   return ({
       loading,
       error,
-      totalTodos,
-      completedTodos,
+      totalNotes,
+      archivedNote,
       searchValue,
       setSearchValue,
-      searchedTodos,
-      addTodo,
-      completeTodo,
-      deleteTodo,
+      searchedNotes,
+      addNote,
+      updateNote,
+      deleteNote,
       openModal,
       setOpenModal,
     });

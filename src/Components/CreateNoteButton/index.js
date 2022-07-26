@@ -1,6 +1,6 @@
 import React from 'react';
-import './CreateTodoButton.css';
 import Button from 'react-bootstrap/Button'
+import './CreateNoteButton.css';
 function CreateNoteButton({setOpenModal}) {
   const onClickButton = () => {
     setOpenModal(true);

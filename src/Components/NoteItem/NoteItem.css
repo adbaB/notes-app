@@ -1,4 +1,4 @@
-.TodoItem {
+.NoteItem {
   background-color: #FAFAFA;
   position: relative;
   display: flex;
@@ -8,7 +8,7 @@
   box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
 }
 
-.TodoItem-p {
+.NoteItem-p {
   color: #1E1E1F;
   margin: 24px 0 24px 24px;
   width: calc(100% - 120px);
@@ -16,6 +16,6 @@
   line-height: 24px;
   font-weight: 400;
 }
-.TodoItem-p--complete {
+.NoteItem-p--complete {
   text-decoration: line-through;
 }

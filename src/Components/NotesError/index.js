@@ -1,7 +1,7 @@
 import React from 'react';
 
-function TodosError() {
+function NotesError() {
   return <p>Desespérate, hubo un error...</p>;
 }
 
-export { TodosError };
+export { NotesError };
