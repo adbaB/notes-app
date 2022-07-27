@@ -15,8 +15,8 @@ import { FilterNote } from "../FilterNote";
 
 function App() {
   const {
-    error,
     loading,
+    error,
     filterNotes,
     deleteNote,
     openCreateModal,
@@ -25,8 +25,6 @@ function App() {
     setOpenUpdateModal,
     addNote,
     updateNote,
-    totalNotes,
-    archivedNoteList,
     ArchiveNote,
     handlerEditNote,
     noteEdit,
@@ -44,7 +42,7 @@ function App() {
     <div className="main">
       <Header>
         <div className="title-container">
-        <NoteCounter totalNotes={totalNotes} activeArchive = {activeArchive} />
+        <NoteCounter  activeArchive = {activeArchive} />
         <ArchivedButton setActiveArchive ={setActiveArchive} activeArchive = {activeArchive} />
         </div>
         <FilterNote optionFilter = {optionFilter} setSearchValue = {setSearchValue} />

@@ -23,8 +23,7 @@ export function useNotes() {
   const [optionFilter, setOptionFilter] = useState([])
   const [noteEdit, setNoteEdit] = useState({})
   const [idDelete, setIdDelete] = useState("")
-  const archivedNoteList = notes.filter(note => !!note.archived).length;
-  const totalNotes = notes.length;
+
   
   useEffect(() => {
 
@@ -107,18 +106,14 @@ export function useNotes() {
   return ({
       loading,
       error,
-      totalNotes,
-      archivedNoteList,
-      searchValue,
-      setSearchValue,
       filterNotes,
-      addNote,
-      updateNote,
       deleteNote,
       openCreateModal,
       setOpenCreateModal,
       openUpdateModal,
       setOpenUpdateModal,
+      addNote,
+      updateNote,
       ArchiveNote,
       handlerEditNote,
       noteEdit,
@@ -128,7 +123,8 @@ export function useNotes() {
       handlerDeleteNote,
       setActiveArchive,
       activeArchive,
-      optionFilter
+      optionFilter,
+      setSearchValue,
     });
 }
 
