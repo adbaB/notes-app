@@ -54,7 +54,7 @@ useEffect(()=>{
       setIsKeyDown(false);
       return;
     }
-    console.log(noteEdit)
+  
     let value = {}
     if(noteEdit){
       value = {

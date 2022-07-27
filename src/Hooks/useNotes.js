@@ -39,7 +39,7 @@ export function useNotes() {
     filterNotes = notes.filter(note => !note.archived )
   }
   if (searchValue) {
-    console.log(searchValue)
+   
     filterNotes = filterNotes.filter(notes => {
       return notes.categories.includes(searchValue)
     });
@@ -49,7 +49,7 @@ export function useNotes() {
     categories.forEach(categorie => { 
       if (!newArray.includes(categorie.toLowerCase())){
         newArray.push(categorie.toLowerCase())
-        console.log(newArray)
+      
       }
       setOptionFilter(newArray)
     
@@ -69,10 +69,10 @@ export function useNotes() {
   const updateNote = (editNote) => {
     const noteIndex = notes.findIndex(note => note.id === editNote.id);
     const newNote = [...notes];
-    console.log(editNote)
+    
     
     newNote.splice(noteIndex, 1, editNote);
-    console.log(newNote[noteIndex])
+ 
     addTagFilter(editNote.categories)
     saveNote(newNote);
   };

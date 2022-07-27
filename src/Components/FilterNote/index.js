@@ -3,7 +3,7 @@ import './index.css'
 export const FilterNote = ({optionFilter,setSearchValue}) => {
     const handlerChange = (e)=> {
         setSearchValue(e.target.value)
-        console.log(e)
+      
   
     }
   return (
