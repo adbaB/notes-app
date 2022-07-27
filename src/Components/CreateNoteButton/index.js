@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button'
+import {FiPlus} from 'react-icons/fi'
 import './CreateNoteButton.css';
 function CreateNoteButton({setOpenModal}) {
   const onClickButton = () => {
@@ -7,12 +8,15 @@ function CreateNoteButton({setOpenModal}) {
   };
 
   return (
-    <Button
-      variant = "primary"
+    <li className='add-box'>
+    <Button className='icon'
+    
       onClick={onClickButton}
     >
-     Create +
+     <FiPlus/>
     </Button>
+    <p>Add new Note</p>
+    </li>
   );
 }
 

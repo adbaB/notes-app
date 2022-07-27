@@ -10,11 +10,10 @@ import './NoteItem.css';
 
 function NoteItem({note,onDelete,onArchive,onEdit}) {
   return (
-    <li className="NoteItem">
-    <Card style={{ width: '18rem' }}>
-      <Card.Body>
+    <li >
+    <Card  bg ="ligth" style={{ height: '300px', width : '265px' }}>
+      <Card.Body >
         <Card.Title> <BiNote/> {note.title}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">last Edi: 2022/05/05</Card.Subtitle>
         <Card.Text>
          {note.content}
         </Card.Text>
@@ -26,13 +25,15 @@ function NoteItem({note,onDelete,onArchive,onEdit}) {
           </Badge>)
           })}
         </div>
-        <p>{note.id}</p>
+          <div className='card-footer'>
+          <p>last Edi: 2022/05/05</p>
        <Button variant="light" onClick={onArchive}>
         {note.archived ? <BiArchiveOut/> : <BiArchiveIn/> }
        </Button>
 
        <Button variant="light" onClick={onEdit}><BiEditAlt/></Button>
        <Button variant="light" onClick={onDelete}><BiX/></Button>
+          </div>
       </Card.Body>
     </Card>
     </li>

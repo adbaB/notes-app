@@ -2,4 +2,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: rgb(242, 241, 255);
+    flex-direction: column;
+    padding-bottom: 50px;
+}
+.title-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }

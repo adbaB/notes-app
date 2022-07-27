@@ -7,10 +7,11 @@ import { NotesLoading } from "../NotesLoading";
 import { EmptyNotes } from "../EmptyNotes";
 import {ArchivedButton} from "../ArchivedButton"
 import { CreateNoteButton } from "../CreateNoteButton";
-import { Form } from "../Form";
+import { FormNote } from "../FormNote";
 import { Header } from "../Header";
 import { useNotes } from "../../Hooks/useNotes";
 import { AlertDelete } from "../AlertDelete";
+import { FilterNote } from "../FilterNote";
 
 function App() {
   const {
@@ -35,22 +36,24 @@ function App() {
     handlerDeleteNote,
     setActiveArchive,
     activeArchive,
-    optionFilter
+    optionFilter,
+    setSearchValue
   } = useNotes();
 
   return (
-    <>
+    <div className="main">
       <Header>
+        <div className="title-container">
         <NoteCounter totalNotes={totalNotes} />
-        <div>
-        <CreateNoteButton setOpenModal={setOpenCreateModal} />
-        <ArchivedButton setActiveArchive ={setActiveArchive} activeArchive = {activeArchive} optionFilter = {optionFilter}/>
+        <ArchivedButton setActiveArchive ={setActiveArchive} activeArchive = {activeArchive} />
         </div>
+        <FilterNote optionFilter = {optionFilter} setSearchValue = {setSearchValue} />
       </Header>
 
       <NoteList>
         {error && <NotesError />}
         {loading && <NotesLoading />}
+          <CreateNoteButton setOpenModal={setOpenCreateModal} />
         {!loading && !filterNotes.length && <EmptyNotes />}
 
         {filterNotes.map((note) => (
@@ -64,13 +67,13 @@ function App() {
         ))}
       </NoteList>
 
-      <Form
+      <FormNote
         openModal={openCreateModal}
         setOpenModal={setOpenCreateModal}
         action={addNote}
         type="Create"
       />
-      <Form
+      <FormNote
         openModal={openUpdateModal}
         setOpenModal={setOpenUpdateModal}
         action={updateNote}
@@ -83,7 +86,7 @@ function App() {
        
         onDelete={()=>deleteNote(idDelete)}
       />
-    </>
+    </div>
   );
 }
 

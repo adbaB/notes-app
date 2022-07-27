@@ -1,0 +1,14 @@
+.archive{
+    background : #FFF;
+
+    font-size: 25px;
+}
+
+.archive:focus {
+    background: #FFF;
+    color: #FFF
+}
+.archive:hover {
+    background: #FFF;
+    color: #FFF
+}

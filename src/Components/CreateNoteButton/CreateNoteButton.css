@@ -1,2 +1,27 @@
+.add-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #FFF;
+    height: 300px;
+    padding: 1em 1.5em 1.5em  ;
 
+}
+
+.add-box .icon {
+    height: 78px;
+    width: 78px;
+    font-size: 30px;
+    border-radius: 50%;
+    color: #000;
+    border: 3px dashed #000;
+    background: #FFF;
+}
+
+.add-box p {
+    color: #000;
+    font-weight: 700;
+    margin-top: 20px;
+}
 

@@ -1,25 +1,6 @@
-.NoteItem {
-  background-color: #FAFAFA;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 24px;
-  box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+.Card-container{
+background-color: transparent;
 }
-
-.NoteItem-p {
-  color: #1E1E1F;
-  margin: 24px 0 24px 24px;
-  width: calc(100% - 120px);
-  font-size: 18px;
-  line-height: 24px;
-  font-weight: 400;
-}
-.NoteItem-p--complete {
-  text-decoration: line-through;
-}
-
 .tags-input-container{
   border: 2px solid #000;
   padding: .5em;

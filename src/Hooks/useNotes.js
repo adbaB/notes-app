@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import uuid from 'react-uuid';
 import { useLocalStorage } from './useLocalStorage';
 
@@ -11,6 +11,10 @@ export function useNotes() {
     loading,
     error,
   } = useLocalStorage('NOTES', []);
+  const {
+    item: categorie,
+    saveItem: saveCategorie
+  } = useLocalStorage('CATEGORIES', []);
   const [searchValue, setSearchValue] = useState('');
   const [openCreateModal, setOpenCreateModal] = useState(false);
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
@@ -19,10 +23,15 @@ export function useNotes() {
   const [optionFilter, setOptionFilter] = useState([])
   const [noteEdit, setNoteEdit] = useState({})
   const [idDelete, setIdDelete] = useState("")
-
   const archivedNoteList = notes.filter(note => !!note.archived).length;
   const totalNotes = notes.length;
+  
+  useEffect(() => {
 
+    setOptionFilter(categorie)
+  
+  }, [categorie])
+  
   let filterNotes = [];
   if (activeArchive){
     filterNotes = notes.filter(note => !!note.archived ) 
@@ -30,22 +39,22 @@ export function useNotes() {
   else {
     filterNotes = notes.filter(note => !note.archived )
   }
-  if (searchValue.length >= 1) {
-    filterNotes = notes.filter(notes => {
-      const notesText = notes.text.toLowerCase();
-      const searchText = searchValue.toLowerCase();
-      return notesText.includes(searchText);
+  if (searchValue) {
+    console.log(searchValue)
+    filterNotes = filterNotes.filter(notes => {
+      return notes.categories.includes(searchValue)
     });
   } 
   const addTagFilter = (categories) => {
-    categories.forEach(categorie => {
-      console.log(categorie)
-      const newArray = [...optionFilter]
+    const newArray = [...optionFilter]
+    categories.forEach(categorie => { 
       if (!newArray.includes(categorie.toLowerCase())){
         newArray.push(categorie.toLowerCase())
+        console.log(newArray)
       }
       setOptionFilter(newArray)
-      
+    
+      saveCategorie(newArray)  
     });
   }
   const addNote = (newNote) => {

@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./Modal.css";
 
-export const Form = ({ openModal, setOpenModal,action,type,noteEdit }) => {
+export const FormNote = ({ openModal, setOpenModal,action,type,noteEdit }) => {
   const [textAreaValue, setTextAreaValue] = useState("");
   const [isKeyDown, setIsKeyDown] = useState(false);
   const [inputTitleValue, setInputTitleValue] = useState("");
@@ -24,8 +24,9 @@ useEffect(()=>{
 
   const handlerKeyDown = (event) => {
     if (event.key !== "Enter") return;
-    const value = event.target.value;
+    let value = event.target.value;
     if (!value.trim()) return;
+    value  = value.toLowerCase()
     setTags([...tags, value]);
     event.target.value = "";
     setIsKeyDown(true);

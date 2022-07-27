@@ -4,7 +4,7 @@ import './NoteList.css'
 function NoteList(props) {
   return (
     <section>
-      <ul>
+      <ul className='wrapper'>
         {props.children}
       </ul>
     </section>
