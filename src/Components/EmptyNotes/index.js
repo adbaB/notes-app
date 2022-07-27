@@ -1,7 +1,7 @@
 import React from 'react';
-
+import './index.css'
 function EmptyNotes() {
-  return <p>¡Create your first Note</p>;
+  return <p className='empty-note'>Create your first Note ! </p>;
 }
 
 export { EmptyNotes };

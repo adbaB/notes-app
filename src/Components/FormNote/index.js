@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import Form from 'react-bootstrap/Form';
 import "./index.css";
 
 export const FormNote = ({ openModal, setOpenModal,action,type,noteEdit }) => {
@@ -91,29 +92,21 @@ useEffect(()=>{
       <Modal.Header closeButton>
         <Modal.Title>{type} Note</Modal.Title>
       </Modal.Header>
-      <form onSubmit={onSubmit}>
+
+      
+        <Form onSubmit={onSubmit}>
         <Modal.Body className="body-container">
-          <div>
-
-          <label>Title</label>
-          <input
-            type="text"
-            placeholder="Titler"
-            onChange={onChangeInput}
-            value={inputTitleValue}
-          />
-          </div>
-          <div>
-
-          <label>Content</label>
-          <textarea
-            value={textAreaValue}
+        <Form.Group className="mb-3">
+        <Form.Label>Title</Form.Label>
+        <Form.Control type="text" placeholder="Title" onChange={onChangeInput} value={inputTitleValue}/>
+        </Form.Group>
+        <Form.Group className="mb-3">
+        <Form.Label>Content</Form.Label>
+        <Form.Control as="textarea" rows={3} value={textAreaValue}
             onChange={onChangeTextArea}
-            placeholder="Cortar la cebolla para el almuerzo"
-          />
-          </div>
-          <div>
-
+            placeholder="Write your text here..."/>
+        </Form.Group>
+        <div>
           <label>Categories</label>
           <div className="tags-input-container">
             { tags.length >= 1 &&  tags.map((tag, index) => (
@@ -130,6 +123,8 @@ useEffect(()=>{
             />
           </div>
           </div>
+          
+         
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handlerModal}>
@@ -139,7 +134,7 @@ useEffect(()=>{
             Save
           </Button>
         </Modal.Footer>
-      </form>
+      </Form>
     </Modal>
   );
 };

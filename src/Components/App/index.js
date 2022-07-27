@@ -44,7 +44,7 @@ function App() {
     <div className="main">
       <Header>
         <div className="title-container">
-        <NoteCounter totalNotes={totalNotes} />
+        <NoteCounter totalNotes={totalNotes} activeArchive = {activeArchive} />
         <ArchivedButton setActiveArchive ={setActiveArchive} activeArchive = {activeArchive} />
         </div>
         <FilterNote optionFilter = {optionFilter} setSearchValue = {setSearchValue} />
