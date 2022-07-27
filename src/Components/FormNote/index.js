@@ -1,7 +1,7 @@
 import { useState,useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import "./Modal.css";
+import "./index.css";
 
 export const FormNote = ({ openModal, setOpenModal,action,type,noteEdit }) => {
   const [textAreaValue, setTextAreaValue] = useState("");
@@ -92,20 +92,28 @@ useEffect(()=>{
         <Modal.Title>{type} Note</Modal.Title>
       </Modal.Header>
       <form onSubmit={onSubmit}>
-        <Modal.Body>
+        <Modal.Body className="body-container">
+          <div>
+
           <label>Title</label>
           <input
             type="text"
             placeholder="Titler"
             onChange={onChangeInput}
             value={inputTitleValue}
-          ></input>
+          />
+          </div>
+          <div>
+
           <label>Content</label>
           <textarea
             value={textAreaValue}
             onChange={onChangeTextArea}
             placeholder="Cortar la cebolla para el almuerzo"
           />
+          </div>
+          <div>
+
           <label>Categories</label>
           <div className="tags-input-container">
             { tags.length >= 1 &&  tags.map((tag, index) => (
@@ -120,6 +128,7 @@ useEffect(()=>{
               placeholder="type Categorie..."
               onKeyDown={handlerKeyDown}
             />
+          </div>
           </div>
         </Modal.Body>
         <Modal.Footer>
