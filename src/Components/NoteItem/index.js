@@ -1,19 +1,20 @@
 import React from 'react';
 
 import Badge from 'react-bootstrap/Badge';
-import { BsFillStickyFill,BsPencilFill,BsX,BsFillArchiveFill } from "react-icons/bs";
+
+import { BiArchiveIn,BiArchiveOut,BiX,BiEditAlt,BiNote } from "react-icons/bi";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './NoteItem.css';
 
 
-function NoteItem({note,onDelete}) {
+function NoteItem({note,onDelete,onArchive,onEdit}) {
   return (
     <li className="NoteItem">
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title> <BsFillStickyFill/> {note.title}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+        <Card.Title> <BiNote/> {note.title}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">last Edi: 2022/05/05</Card.Subtitle>
         <Card.Text>
          {note.content}
         </Card.Text>
@@ -25,10 +26,13 @@ function NoteItem({note,onDelete}) {
           </Badge>)
           })}
         </div>
-       <Button variant="light"><BsFillArchiveFill/></Button>
+        <p>{note.id}</p>
+       <Button variant="light" onClick={onArchive}>
+        {note.archived ? <BiArchiveOut/> : <BiArchiveIn/> }
+       </Button>
 
-       <Button variant="light"><BsPencilFill/></Button>
-       <Button variant="light" onClick={onDelete}><BsX/></Button>
+       <Button variant="light" onClick={onEdit}><BiEditAlt/></Button>
+       <Button variant="light" onClick={onDelete}><BiX/></Button>
       </Card.Body>
     </Card>
     </li>
