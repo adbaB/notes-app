@@ -99,7 +99,6 @@ export function useNotes() {
   };
   //pendiente
   const updateNote = (editNote) => {
-    console.log(editNote);
     const noteIndex = notes.findIndex((note) => note.id === editNote.id);
     const newNote = [...notes];
     let categorieArray = Array.from(editNote.categories, (item) => item.id);
@@ -109,16 +108,14 @@ export function useNotes() {
       archived: editNote.archived,
       categoriesIds: categorieArray,
     };
-    console.log(updateSchema);
+
     axios
       .put(`${API_URL}/notes/${editNote.id}`, updateSchema)
-      .then((response) => {
-        console.log(response);
-      });
+      .then((response) => {});
     newNote.splice(noteIndex, 1, editNote);
 
     addTagFilter(editNote.categories);
-    console.log(newNote);
+
     setNotes(newNote);
   };
 
