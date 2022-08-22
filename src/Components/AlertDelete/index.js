@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-export function AlertDelete({
-  openDeleteModal,
-  setOpenDeleteModal,
-  onDelete
-}) {
-
+export function AlertDelete({ openDeleteModal, setOpenDeleteModal, onDelete }) {
   return (
     <>
       <Modal
@@ -23,7 +18,9 @@ export function AlertDelete({
           <Button variant="secondary" onClick={setOpenDeleteModal}>
             No
           </Button>
-          <Button variant="primary" onClick={ onDelete}>Yes i am sure</Button>
+          <Button variant="primary" onClick={onDelete}>
+            Yes i am sure
+          </Button>
         </Modal.Footer>
       </Modal>
     </>
